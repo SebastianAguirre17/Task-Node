@@ -7,7 +7,7 @@
         "start": "node app",
         "dev": "nodemon app",
         "test": "standard && node my-test.js",
-        "build": ""
+        "build": "my-framework build --output public"
     },
     "author": "",
     "license": "MIT",
