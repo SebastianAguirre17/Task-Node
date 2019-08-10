@@ -1,0 +1,51 @@
+<% include partials/_header.ejs %>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="tittle" id="" class="form-control" placeholder="Titulo">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Descripcion" name="description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table table-hover table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Nro</th>
+                        <th>Titulo</th>
+                        <th>Descripcion</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0, a=tasks.length; i<a; i++) { %>
+                    <tr>
+                        <td> <%= i + 1 %> </td>
+                        <td> <%= tasks[i].tittle %> </td>
+                        <td> <%= tasks[i].description %> </td>
+                        <td>
+                            <a href="/turn/<%= tasks[i]._id %>"class="<%=tasks[i].status ? 'btn btn-success' : 'btn btn-dark' %>">Listo</a>
+                            <a href="/delete/<%= tasks[i]._id %>" class="btn btn-danger">Borrar</a>
+                            <a href="/edit/<%= tasks[i]._id %>" class="btn btn-info ">Editar</a>
+                        </th>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer.ejs %>
